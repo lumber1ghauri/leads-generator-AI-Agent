@@ -233,7 +233,7 @@ function App() {
               <span className="social-icon">𝕏</span>
             </motion.a>
             <motion.a 
-              href="https://github.com/yourhandle" 
+              href="https://github.com/lumber1ghauri" 
               target="_blank" 
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: -5 }}
