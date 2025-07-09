@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+# 🚀 AI Lead Generator — Find Leads in Seconds
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Say goodbye to wasting hours searching for potential clients or companies online.  
+This tool uses automation + AI + scraping to instantly fetch leads based on your search query and saves them in a Google Sheet for you.
 
-## Available Scripts
+🔗 **Live App**: [leads-generetor-ai.vercel.app](https://leads-generetor-ai.vercel.app)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ⚡ What It Does
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You enter a search query like:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `ecommerce brands in USA`
+- `startups in Dubai`
+- `top software houses in Pakistan`
 
-### `npm test`
+The tool:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Takes your query and sends it to a smart search agent.
+2. Scrapes top results using SERP and web automation.
+3. Extracts useful company-level data like:
+   - Name
+   - Website
+   - Description
+   - Source
+4. Creates a new Google Sheet for you.
+5. Automatically appends the data there.
+6. Gives you a public link to view the leads.
 
-### `npm run build`
+No signup. No extensions. No scraping headaches.  
+Just search → get leads → download or use.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧠 Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend**: Vercel-hosted React SPA
+- **Backend**: Self-hosted n8n workflow running on personal laptop
+- **Automation**: SERP scraping, Google Sheets API
+- **Infrastructure**: Docker + ngrok for tunneling backend to web
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 💡 Use Cases
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Freelancers building lead lists
+- Marketing agencies doing outreach
+- Startups validating ideas
+- Sales teams doing prospecting
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🔐 Note About Hosting
 
-## Learn More
+> ⚠️ This project’s backend is **hosted on my personal laptop**, tunneled via `ngrok`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+That means:
+- You can **use the live version at** [leads-generetor-ai.vercel.app](https://leads-generetor-ai.vercel.app)
+- But you **can’t clone or run the backend** unless you build your own using the n8n workflow and APIs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you're interested in the backend automation part, feel free to reach out!
+
+---
+
+## 🛠️ Coming Soon
+
+- Export as `.xlsx`
+- Email finder integration
+- User authentication
+- Query history dashboard
+- SaaS version with billing
+
+---
+
+## 🤝 Contribute / Feedback
+
+Have ideas or want to build your own? Open an issue or connect with me on [LinkedIn](https://www.linkedin.com/in/ukasha-zahid-46b397222/) — I’d love to chat!
+
+---
+
+## 📜 License
+
+MIT — feel free to fork and adapt the frontend for your own use.
