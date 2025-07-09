@@ -119,9 +119,9 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Harness the power of AI to discover targeted business leads tailored to your niche. 
-          Our advanced algorithm scans and analyzes potential leads, delivering you a curated list 
-          of promising business opportunities in seconds.
+         An AI-powered tool that lets you generate leads for any industry by entering a keyword 
+         automatically finds company names, websites, and emails, and gives you
+          a clean downloadable sheet in seconds.
         </motion.p>
       </header>
       
