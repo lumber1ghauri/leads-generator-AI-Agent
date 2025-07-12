@@ -25,6 +25,8 @@ function App() {
   const [result, setResult] = useState<SearchResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
+  const [searchCount, setSearchCount] = useState(73);
+  const [accuracy] = useState(81);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -54,6 +56,7 @@ function App() {
 
     setIsLoading(true);
     setError(null);
+    setSearchCount(prev => prev + 1);
     
     try {
       const response = await fetch(' https://234e81337444.ngrok-free.app/webhook/lead-search', {
@@ -78,6 +81,18 @@ function App() {
 
   return (
     <div className="futuristic-bg">
+      {/* Background Video */}
+      <video 
+        className="background-video" 
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+      >
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
       {/* Animated Background */}
       <div className="animated-bg">
         {[...Array(50)].map((_, i) => (
@@ -103,29 +118,97 @@ function App() {
           />
         ))}
       </div>
-      
-      <header className="futuristic-header">
+
+      {/* Navbar */}
+      <motion.nav 
+        className="navbar"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="navbar-left">
+          <motion.img 
+            src="/NavbarLogo.png" 
+            alt="Logo" 
+            className="navbar-logo"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          />
+        </div>
+        
         <motion.h1 
-          className="futuristic-title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="navbar-title"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Agentic Leads Generator
+          AI Leads Generator
         </motion.h1>
-        <motion.p 
-          className="futuristic-description"
+        
+        <div className="navbar-right">
+          <motion.a 
+            href="https://twitter.com/yourhandle" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="navbar-link"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span className="social-icon">𝕏</span>
+          </motion.a>
+          <motion.a 
+            href="https://github.com/lumber1ghauri" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="navbar-link"
+            whileHover={{ scale: 1.1, rotate: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <span className="social-icon">🔗</span>
+          </motion.a>
+          <motion.a 
+            href="https://siriussolutions.xyz" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="navbar-link"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <GlobeAltIcon className="social-icon" width={24} height={24} />
+          </motion.a>
+        </div>
+      </motion.nav>
+      
+      <main className="futuristic-main">
+        <motion.div 
+          className="description-container"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-         An AI-powered tool that lets you generate leads for any industry by entering a keyword 
-         automatically finds company names, websites, and emails, and gives you
-          a clean downloadable sheet in seconds.
-        </motion.p>
-      </header>
-      
-      <main className="futuristic-main">
+          <h2 className="description-title">Transform Your Lead Generation</h2>
+          <p className="description-text">
+            Our AI-powered platform instantly finds and validates business leads for any industry. 
+            Simply enter a business niche or keyword, and we'll generate a comprehensive list of 
+            companies with verified contact information, websites, and email addresses. 
+            Get your custom lead sheet in seconds, ready for your sales outreach campaigns.
+          </p>
+          <div className="description-features">
+            <div className="feature-item">
+              <span className="feature-icon">⚡</span>
+              <span>Instant Results</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🎯</span>
+              <span>Verified Data</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">📊</span>
+              <span>Export Ready</span>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div 
           className="search-container"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -160,6 +243,24 @@ function App() {
               )}
             </span>
           </motion.button>
+        </motion.div>
+
+        <motion.div 
+          className="stats-container"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <div className="stats-item">
+            <span className="stats-icon">🔍</span>
+            <span className="stats-label">Searches:</span>
+            <span className="stats-value">{searchCount}</span>
+          </div>
+          <div className="stats-item">
+            <span className="stats-icon">🎯</span>
+            <span className="stats-label">Accuracy:</span>
+            <span className="stats-value">{accuracy}%</span>
+          </div>
         </motion.div>
 
         <motion.div 
@@ -214,51 +315,6 @@ function App() {
           )}
         </motion.div>
       </main>
-
-      <motion.footer 
-        className="futuristic-footer"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <div className="footer-content">
-          <span>Connect with us: </span>
-          <div className="social-links">
-            <motion.a 
-              href="https://twitter.com/yourhandle" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-            >
-              <span className="social-icon">𝕏</span>
-            </motion.a>
-            <motion.a 
-              href="https://github.com/lumber1ghauri" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: -5 }}
-            >
-              <span className="social-icon">🔗</span>
-            </motion.a>
-            <motion.a 
-              href="https://siriussolutions.xyz" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-            >
-              <GlobeAltIcon className="social-icon" width={24} height={24} />
-            </motion.a>
-          </div>
-          <motion.p
-            className="footer-credit"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            A product of Sirius Solutions
-          </motion.p>
-        </div>
-      </motion.footer>
     </div>
   );
 }
