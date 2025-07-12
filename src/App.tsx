@@ -56,7 +56,7 @@ function App() {
     setError(null);
     
     try {
-      const response = await fetch('https://1873bef7b7b5.ngrok-free.app/webhook/lead-search', {
+      const response = await fetch(' https://2b478dbb6937.ngrok-free.app/webhook/lead-search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })
