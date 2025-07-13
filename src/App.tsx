@@ -6,6 +6,7 @@ import {
   ArrowDownTrayIcon,
   GlobeAltIcon 
 } from '@heroicons/react/24/outline';
+import LetterGlitch from './components/LetterGlitch';
 
 interface SearchResponse {
   sheet_link?: string;
@@ -35,7 +36,7 @@ function App() {
         setLoadingMessageIndex((prev: number) => 
           prev < loadingMessages.length - 1 ? prev + 1 : prev
         );
-      }, 2000);
+      }, 4000);
     } else {
       setLoadingMessageIndex(0);
     }
@@ -81,18 +82,23 @@ function App() {
 
   return (
     <div className="futuristic-bg">
-      {/* Background Video */}
-      <video 
-        className="background-video" 
-        autoPlay 
-        muted 
-        loop 
-        playsInline
-      >
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
+      {/* LetterGlitch Background */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }}>
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={false}
+          smooth={true}
+        />
+      </div>
       {/* Animated Background */}
       <div className="animated-bg">
         {[...Array(50)].map((_, i) => (
@@ -263,57 +269,58 @@ function App() {
           </div>
         </motion.div>
 
-        <motion.div 
-          className="result-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          {error && (
-            <motion.div 
-              className="error-message"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              <span className="error-icon">❌</span>
-              {error}
-            </motion.div>
-          )}
-          
-          {isLoading && (
-            <motion.div 
-              className="loading-message"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <div className="loading-spinner"></div>
-              <span>{loadingMessages[loadingMessageIndex]}</span>
-            </motion.div>
-          )}
-          
-          {result?.sheet_link && (
-            <motion.div 
-              className="success-message"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <span className="success-icon">✨</span>
-              Your leads are ready!
-              <motion.a 
-                href={result.sheet_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sheet-link"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
+        {/* Remove always-rendered result-container, only render if needed */}
+        {(error || isLoading || result?.sheet_link) && (
+          <motion.div 
+            className="result-container"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {error && (
+              <motion.div 
+                className="error-message"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
               >
-                <ArrowDownTrayIcon className="sheet-icon" width={20} height={20} />
-                View Your Custom Lead Sheet
-                <span className="arrow">→</span>
-              </motion.a>
-            </motion.div>
-          )}
-        </motion.div>
+                <span className="error-icon">❌</span>
+                {error}
+              </motion.div>
+            )}
+            {isLoading && (
+              <motion.div 
+                className="loading-message"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <div className="loading-spinner"></div>
+                <span>{loadingMessages[loadingMessageIndex]}</span>
+              </motion.div>
+            )}
+            {result?.sheet_link && (
+              <motion.div 
+                className="success-message"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <span className="success-icon">✨</span>
+                Your leads are ready!
+                <motion.a 
+                  href={result.sheet_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sheet-link"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <ArrowDownTrayIcon className="sheet-icon" width={20} height={20} />
+                  View Your Custom Lead Sheet
+                  <span className="arrow">→</span>
+                </motion.a>
+              </motion.div>
+            )}
+          </motion.div>
+        )}
       </main>
     </div>
   );
