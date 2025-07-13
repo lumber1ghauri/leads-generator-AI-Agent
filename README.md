@@ -3,7 +3,7 @@
 Say goodbye to wasting hours searching for potential clients or companies online.  
 This tool uses automation + AI + scraping to instantly fetch leads based on your search query and saves them in a Google Sheet for you.
 
-🔗 **Live App**: [leads-generetor-ai.vercel.app](https://leads-generetor-ai.vercel.app)
+🔗 **Live App**: [leads-generetor-ai.vercel.app](https://leads.siriussolutions.xyz)
 
 ---
 
