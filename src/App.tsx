@@ -16,7 +16,11 @@ const loadingMessages = [
   "🔍 Scanning the business landscape...",
   "📊 Analyzing potential leads...",
   "🎯 Finding the perfect matches...",
-  "📝 Preparing your custom sheet...",
+  "🚀 Finding Emails for the Websites...",
+  "📈 Validating contact information...",
+  "📋 Auditing the extracted Websites...",
+  "📂 Compiling your custom lead sheet...",
+  "📥 Preparing your download link...",
   "✨ Almost ready..."
 ];
 
@@ -60,7 +64,7 @@ function App() {
     setSearchCount(prev => prev + 1);
     
     try {
-      const response = await fetch('https://28a26c1149fd.ngrok-free.app/webhook/lead-search', {
+      const response = await fetch('https://bad7f439c9ed.ngrok-free.app/webhook/lead-search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })
