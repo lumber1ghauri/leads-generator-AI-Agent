@@ -64,7 +64,7 @@ function App() {
     setSearchCount(prev => prev + 1);
     
     try {
-      const response = await fetch('https://a5216b6c98b0.ngrok-free.app/webhook/lead-search', {
+      const response = await fetch('https://fe6bca7f4fb7.ngrok-free.app/webhook/lead-search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })
